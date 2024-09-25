@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toteutuksen tiedot</title>
+    <link rel="stylesheet" href="tyyli.css">
+</head>
+<body>
+<!-- TEHTÄVÄ 2 -->
+    <div class="center">
+        <div class="nav">
+            <a href="kurssi.html">Kurssi</a>
+            <a class="active" href="toteutus.html">Toteutus</a>
+            <a href="tapahtumat.html">Tapahtumat</a>
+            <a href="saa.html">Sää</a>
+            <a href="liikennekamera.html">Liikennekamera</a>
+            <a href="junat.html">Junat</a>
+        </div>
+        <div id="vastaus"></div>
+    </div>
+    <div class="footer">
+        <p>JSON-oppimistehtävä &#169; Kirsi Kivilahti 2024</p>
+    </div>
+</body>
+</html>
+<script>
+    fetch('https://run.mocky.io/v3/2750e413-5ba3-4c59-ba80-cf8ddd2281ec')
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (responseJson) {
+        kerro(responseJson);
+    })
+    .catch(function (error) {
+        document.getElementById("vastaus").innerHTML = "<p>Tietoa ei pystytä hakemaan</p>";
+    })
+    function kerro(data) {
+        let teksti = "";
+        teksti += "<h1>Toteutuksen tiedot</h1>"
+        teksti += "<p><img src='" + data.kuva + "'alt='tietokoneet' style='max-width: 500px'></p>";
+        teksti += "<h3>Toteutuksen nimi: " + data.nimi + "</h3>";
+        teksti += "<p>Kurssi alkaa " + data.alkamisPvm + " ja päättyy " + data.paattymisPvm + ". Kurssin kesto on " + data.kestoViikkoina + " viikkoa.</p>";
+        teksti += "<p>Osallistujat:<ul>";
+            for (let i = 0; i < data.osallistujat.length; i++) {
+                teksti += "<li>" + data.osallistujat[i] + "</li>";
+            }
+        teksti += "</ul>";
+        document.getElementById("vastaus").innerHTML = teksti;
+    }
+</script>
