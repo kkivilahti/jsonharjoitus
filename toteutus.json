@@ -1,0 +1,30 @@
+{
+    "nimi": "Digitekniikat",
+    "osallistujienLkm": 20,
+    "osallistujat": [
+      "Hanna Peltola",
+      "Noora Mäkinen",
+      "Topi Lahdensuo",
+      "Emma Nikula",
+      "Petri Talvitie",
+      "Jussi Ojala",
+      "Susa Leppälä",
+      "Riku Viiksi",
+      "Mikael Berg",
+      "Ossi Ollikainen",
+      "Vilma Anttila",
+      "Aliisa Kallio",
+      "Tiina Turja",
+      "Topi Heikkilä",
+      "Cecilia Nyman",
+      "Oona Valkama",
+      "Peppi Mäkinen",
+      "Maria-Lotta Luoma",
+      "Petteri Asikainen",
+      "Eero Jurva"
+    ],
+    "alkamisPvm": "19.8.2024",
+    "paattymisPvm": "13.10.2024",
+    "kestoViikkoina": 8,
+    "kuva": "https://tinyurl.com/hh-digitekniikat"
+  }
