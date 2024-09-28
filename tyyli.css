@@ -113,9 +113,10 @@ a:hover {
     background: #303030; 
 }
 
+/* pienempi tietokonenäyttö */
 @media screen and (max-width: 1600px) {
     .center {
-        width: 70%;
+        width: 65%;
         max-height: 70%;
     }
 }
