@@ -1,1 +1,1 @@
-JSON-harjoitus Haaga-Helian Digitekniikat-kurssille
+JSON-harjoitus Haaga-Helian Digitekniikat-kurssille (työpöytäversio)
