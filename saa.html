@@ -25,13 +25,13 @@
             <div id="vastaus2"></div>
         </div>
     </div>
-    <div class="footer">
+    <div class="footer"> <!-- alatunniste -->
         <p>JSON-oppimistehtävä &#169; Kirsi Kivilahti 2024</p>
     </div>
 </body>
 </html>
 <script>
-    
+    // helsingin säätiedot
     fetch('https://api.openweathermap.org/data/2.5/weather?lang=fi&q=helsinki&units=metric&appid=d5fa5348743c03864bf3b91b0881c6dd')
     .then(function(response){
         return response.json();
@@ -55,7 +55,7 @@
 
         document.getElementById("vastaus1").innerHTML = teksti;
     }
-
+    // tampereen säätiedot
     fetch('https://api.openweathermap.org/data/2.5/weather?lang=fi&q=tampere&units=metric&appid=d5fa5348743c03864bf3b91b0881c6dd')
     .then(function(response){
         return response.json();

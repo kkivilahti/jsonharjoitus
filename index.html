@@ -17,12 +17,13 @@
         </div>
         <div id="vastaus"></div> <!-- paikka js-sisällöille -->
     </div>
-    <div class="footer">
+    <div class="footer"> <!-- alatunniste-->
         <p>JSON-oppimistehtävä &#169; Kirsi Kivilahti 2024</p>
     </div>
 </body>
 </html>
 <script>
+    // json-tietojen hakeminen
     fetch('https://kkivilahti.github.io/jsonharjoitus/kurssi.json')
     .then(function (response) {
         return response.json();
@@ -33,7 +34,7 @@
     .catch(function (error) {
         document.getElementById("vastaus").innerHTML = "<p>Tietoa ei pystytä hakemaan</p>";
     })
-
+    // tietojen tulostaminen sivulle
     function kerro(data) {
         let teksti = "";
         teksti = "<h1>" + data.otsikko + "</h1>";
