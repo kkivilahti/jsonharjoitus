@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON-datan käsittelyä</title>
+    <link rel="stylesheet" href="tyyli.css">
+</head>
+<body>
+<!-- TEHTÄVÄ 4 -->
+    <div class="center"> <!-- laatikko sivun sisällöille -->
+        <div class="nav"> <!-- navigaatio -->
+            <a href="kurssi.html">Kurssi</a>
+            <a href="toteutus.html">Toteutus</a>
+            <a href="tapahtumat.html">Tapahtumat</a>
+            <a href="saa.html">Sää</a>
+            <a href="liikennekamera.html">Liikennekamera</a>
+            <a class="active" href="junat.html">Junat</a>
+          </div>
+        <div id="vastaus"></div> <!-- paikka js-sisällöille -->
+    </div>
+    <div class="footer">
+        <p>JSON-oppimistehtävä &#169; Kirsi Kivilahti 2024</p>
+    </div>
+</body>
+</html>
+<script>
+    // json-tietojen hakeminen
+    fetch('https://rata.digitraffic.fi/api/v1/live-trains/station/HKI?departing_trains=100')
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (responseJson) {
+        nayta(responseJson);
+    })
+    .catch(function (error) {
+        document.getElementById("vastaus").innerHTML = "<p>Tietoa ei pystytä hakemaan</p>";
+    })
+    // tietojen tulostaminen
+    function nayta(data) {
+        let teksti = "";
+        teksti += "<h1>Junat Helsingistä Tampereelle</h1>";
+        teksti += "<p>Kuinka usein junia lähtee?</p>";
+            for (let i = 0; i < data.length; i++) {
+                for (let j = 0; j < data[i].timeTableRows.length; j++) {
+                    if (data[i].timeTableRows[j].stationShortCode == "TPE") {
+                        if (data[i].timeTableRows[j].type == "DEPARTURE") {
+                            teksti += "<hr><h3>Junan numero " + data[i].trainNumber + "</h3><ul>";
+                            let aika = data[i].timeTableRows[j].scheduledTime;
+                            teksti += "<li>Junan tyyppi: " + data[i].trainType + "</li>";
+                            teksti += "<li>Arvioitu lähtöaika: " + aika.substr(0,10) + " kello " + aika.substr(11,5) + "</li>";
+                            teksti += "<li>Laituri: " + data[i].timeTableRows[j].commercialTrack + "</li></ul>";
+                        }
+                    }
+                }
+            }
+        document.getElementById("vastaus").innerHTML = teksti;
+    }
+</script>
